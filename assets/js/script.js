@@ -6,17 +6,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     for (let button of buttons) {
         button.addEventListener("click", function() {
-            if(this.getAttribute("data-type") === "submit") {
+            if (this.getAttribute("data-type") === "submit") {
                 checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
             }
-        })
+        });
     }
 
     runGame("addition");
-})
+});
 
 /**
  * The main game "loop", called when the script is first loaded
@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
 function runGame(gameType) {
 
     // Creates two random numbers between 1 and 25
-    let num1 = Math.floor(Math.random() * 25) +1;
-    let num2 = Math.floor(Math.random() * 25) +1;
+    let num1 = Math.floor(Math.random() * 25) + 1;
+    let num2 = Math.floor(Math.random() * 25) + 1;
 
     if (gameType === "addition") {
         displayAdditionQuestion(num1, num2);
@@ -37,16 +37,20 @@ function runGame(gameType) {
     }
 }
 
+	/**	
+ * Checks the answer agaist the first element in	
+ * the returned calculateCorrectAnswer array	
+ */
 function checkAnswer() {
 
     let userAnswer = parseInt(document.getElementById("answer-box").value);
     let calculatedAnswer = calculateCorrectAnswer();
     let isCorrect = userAnswer === calculatedAnswer[0];
-    
-    if (isCorrect){
-        alert("Hey! You got it right! :D")
+
+    if (isCorrect) {
+        alert("Hey! You got it right! :D");
     } else {
-        alert(`Aww... you answered ${userAnswer}. The correct answere was ${calculatedAnswer[0]}!`);
+        alert(`Aww... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
     }
 
     runGame(calculatedAnswer[1]);
@@ -55,7 +59,7 @@ function checkAnswer() {
 function calculateCorrectAnswer() {
     let operand1 = parseInt(document.getElementById('operand1').innerText);
     let operand2 = parseInt(document.getElementById('operand2').innerText);
-    let operator = documnet.getElementById('operator').innerText;
+    let operator = document.getElementById("operator").innerText;
 
     if (operator === "+") {
         return [operand1 + operand2, "addition"];
@@ -65,12 +69,12 @@ function calculateCorrectAnswer() {
     }
 }
 
-function incrementScore(){
-    
+function incrementScore() {
+
 }
 
-function incrementWrongAnswer(){
-    
+function incrementWrongAnswer() {
+
 }
 
 function displayAdditionQuestion(operand1, operand2) {
@@ -79,10 +83,10 @@ function displayAdditionQuestion(operand1, operand2) {
     document.getElementById('operator').textContent = "+";
 }
 
-function displaySubtractQuestion(){
-    
+function displaySubtractQuestion() {
+
 }
 
-function displayMultiplyQuestion(){
-    
+function displayMultiplyQuestion() {
+
 }
